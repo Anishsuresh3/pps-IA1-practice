@@ -1,0 +1,127 @@
+ gcc -g p5original.c
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x876: file p5original.c, line 27.
+(gdb) r
+Starting program: /home/runner/pps-IA1-practice/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p5original.c:27
+27    float n=input();
+(gdb) s
+input () at p5original.c:4
+4   {
+(gdb) n
+6     printf("Enter the number:\n");
+(gdb) n
+Enter the number:
+7     scanf("%f",&f);
+(gdb) n
+16
+8     return f;
+(gdb) p f
+$1 = 16
+(gdb) n
+9   }
+(gdb) n
+main () at p5original.c:28
+28    float r=my_sqrt(n);
+(gdb) s
+my_sqrt (n=16) at p5original.c:12
+12    float s=n/2;
+(gdb) n
+13    float t=0;
+(gdb) n
+14    while (fabs(s-t) > 0.000001)
+(gdb) p s
+$2 = 8
+(gdb) p t
+$3 = 0
+(gdb) n
+16      t=s;
+(gdb) n
+17      s=(n/t + t)/2;
+(gdb) n
+14    while (fabs(s-t) > 0.000001)
+(gdb) p t
+$4 = 8
+(gdb) p s
+$5 = 5
+(gdb) n
+16      t=s;
+(gdb) n
+17      s=(n/t + t)/2;
+(gdb) n
+14    while (fabs(s-t) > 0.000001)
+(gdb) p s
+$6 = 4.0999999
+(gdb) p t
+$7 = 5
+(gdb) n
+16      t=s;
+(gdb) n
+17      s=(n/t + t)/2;
+(gdb) n
+14    while (fabs(s-t) > 0.000001)
+(gdb) p t
+$8 = 4.0999999
+(gdb) p s
+$9 = 4.00121975
+(gdb) n
+16      t=s;
+(gdb) n
+17      s=(n/t + t)/2;
+(gdb) n
+14    while (fabs(s-t) > 0.000001)
+(gdb) p t
+$10 = 4.00121975
+(gdb) p s
+$11 = 4
+(gdb) n
+16      t=s;
+(gdb) n
+17      s=(n/t + t)/2;
+(gdb) n
+14    while (fabs(s-t) > 0.000001)
+(gdb) p t
+$12 = 4
+(gdb) p s
+$13 = 4
+(gdb) n
+19    return s;
+(gdb) n
+20  }
+(gdb) n
+main () at p5original.c:29
+29    output(n,r);
+(gdb) s
+output (n=16, sqrt_result=4) at p5original.c:23
+23    printf("square root of %f if %f\n",n,sqrt_result);
+(gdb) n
+square root of 16.000000 if 4.000000
+24  }
+(gdb) n
+main () at p5original.c:30
+30    return 0;
+(gdb) n
+31  }(gdb) q
+A debugging session is active.
+
+    Inferior 1 [process 945] will be killed.
+
+Quit anyway? (y or n) y
